@@ -1,0 +1,519 @@
+/* ✅ هماهنگی با سایدبار ثابت سمت راست */
+.admin-dashboard-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* ✅ بخش اصلی صفحه */
+.main-content2 {
+  width: 100%;
+  padding: 0px; /* padding بسیار کمتر */
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.dashboard-flex-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex: 1;
+}
+
+.schedule-section {
+  flex: 4; /* Increased from 3 to give side panel less space */
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-side-panel {
+  flex: 0.8; /* Reduced from 1 to make it even narrower */
+  min-width: 250px; /* Ensure it doesn't get too small */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.side-panel-section {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.side-panel-section h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #1e293b;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.no-data-text {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.side-notes-list, .side-leaves-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-note-item {
+  padding: 10px;
+  background-color: #fff9db;
+  border-right: 4px solid #fab005;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.side-leave-item {
+  padding: 10px;
+  background-color: #e3fafc;
+  border-right: 4px solid #15aabf;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.side-leave-item strong {
+  display: block;
+  color: #0b7285;
+  margin-bottom: 4px;
+}
+
+.leave-reason {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #495057;
+  font-style: italic;
+}
+
+.top-bar {
+  padding-right: 50px; /* Adjusted from 100px since it's now inside schedule-section */
+  padding-left: 20px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-input input {
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.add-session-btn {
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.add-session-btn:hover {
+  background-color: #2563eb;
+}
+
+.table-container {
+  
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+table {
+  
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #e2e8f0;
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #f1f5f9;
+}
+
+tr:hover {
+  background-color: #f8fafc;
+}
+
+
+
+/* Schedule Grid */
+.schedule-grid {
+ 
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.grid-header {
+  display: grid;
+  grid-template-columns: 100px repeat(auto-fit, minmax(200px, 1fr));
+  background-color: #e2e8f0;
+  text-align: center;
+  font-weight: bold;
+  width: 97%;
+}
+
+.grid-body {
+  display: grid;
+  grid-template-columns: 100px repeat(auto-fit, minmax(200px, 1fr));
+  position: relative;
+  height: calc(14 * 60px); /* از 8 تا 22 => 14 ساعت * 60px */
+  border-top: 1px solid #e5e7eb;
+  width: 97%;
+}
+
+.time-col {
+  border-right: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.time-slot {
+  height: 60px; /* هر ساعت = 60px ارتفاع */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px dashed #e2e8f0;
+  font-size: 13px;
+  color: #475569;
+}
+
+.therapist-col-body {
+  position: relative;
+  border-right: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.appointment {
+  border: 1px solid black;
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 6px;
+  padding: 4px;
+  font-size: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Wrapper برای اسکرول */
+.schedule-wrapper {
+  padding-right: 60px;
+  padding-left: 10px;
+  max-height: 70vh; /* تا 70 درصد ارتفاع صفحه */
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+/* Grid Header - چسبنده در بالای صفحه */
+.grid-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.grid-body {
+  display: grid;
+  grid-template-columns: 100px repeat(auto-fit, minmax(200px, 1fr));
+  position: relative;
+  height: calc(14 * 60px); /* از 8 تا 22 => 14 ساعت * 60px */
+  min-width: fit-content;
+}
+
+.time-col {
+  border-right: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.time-slot {
+  height: 60px; /* هر ساعت = 60px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px dashed #e2e8f0;
+  font-size: 13px;
+  color: #475569;
+}
+
+.therapist-col-body {
+  position: relative;
+  border-right: 1px solid #e5e7eb;
+  background: #fff;
+  min-height: calc(14 * 60px);
+  min-width: 200px;
+}
+
+.appointment {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 6px;
+  padding: 4px;
+  font-size: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.logout-btn {
+  background-color: rgb(242, 43, 43);
+  color: #f1f5f9;
+}
+
+/* پس‌زمینه‌ی تار مودال */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999 !important; /* 🔥 خیلی بالاتر از سایدبار */
+}
+
+/* خود مودال */
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+  z-index: 100000 !important; /* 🔥 مطمئن شو بالاتر از overlay و sidebar هست */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.appointment-legend {
+  padding-right: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 35px;
+  margin-bottom: 15px;
+  background: #fff;
+  /* padding: 10px 15px; */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 13px;
+  color: #334155;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.legend-icon {
+  font-size: 14px;
+}
+
+/* رنگ‌ها مطابق با وضعیت‌ها */
+.legend-color.scheduled {
+  background-color: #838e9eff;
+}
+
+.legend-color.completed-paid {
+  background-color: #05973bff;
+}
+
+.legend-color.completed-notpaid {
+  background-color: #a1a601ff;
+}
+
+.legend-color.bimeh {
+  background-color: #0b91a9ff;
+}
+
+.legend-color.canceled {
+  background-color: #dc2626;
+}
+
+.legend-color.break {
+  background-color: #000000;
+}
+
+.publishplan-btn {
+  background-color: #5c66f6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.publishplan-btn:hover {
+  background-color: #7c3aed;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+      .price-section {
+          margin: 15px 0;
+          padding: 12px;
+          background: #f8fafc;
+          border-radius: 8px;
+          border: 1px solid #e2e8f0;
+          transition: all 0.3s ease;
+        }
+        
+        .price-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 10px;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+        
+        .price-toggle label {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          cursor: pointer;
+          font-weight: 500;
+          color: #4a5568;
+        }
+        
+        .price-warning {
+          color: #d32f2f;
+          font-weight: 600;
+          margin-right: 5px;
+        }
+        
+        .price-info {
+          display: flex;
+          align-items: center;
+        }
+        
+        .price-display {
+          background: #e6fffa;
+          color: #0d9488;
+          padding: 4px 12px;
+          border-radius: 20px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          border: 1px solid #81e6d9;
+        }
+        
+        .price-loading {
+          color: #718096;
+          font-style: italic;
+          font-size: 0.9rem;
+        }
+        
+        .price-not-found {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: #fff8e1;
+          padding: 6px 12px;
+          border-radius: 6px;
+          border: 1px solid #ffd54f;
+        }
+        
+        .price-warning-icon {
+          font-size: 1rem;
+        }
+        
+        .price-warning-text {
+          color: #ff8f00;
+          font-weight: 600;
+          font-size: 0.85rem;
+        }
+        
+        .custom-price-input {
+          margin-top: 10px;
+          animation: fadeIn 0.3s ease;
+        }
+        
+        .info-message {
+          color: #ff8f00;
+          font-size: 0.85rem;
+          margin-top: 5px;
+          font-style: italic;
+        }
+        
+        .error-message {
+          color: #e53e3e;
+          font-size: 0.85rem;
+          margin-top: 4px;
+        }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        button:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }

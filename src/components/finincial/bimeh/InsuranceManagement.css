@@ -1,0 +1,135 @@
+/* InsuranceManagement.css */
+.insurance-management {
+  font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.insurance-header {
+  background: linear-gradient(135deg, #1a73e8 0%, #6c8ef5 100%);
+  color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.insurance-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.insurance-header p {
+  margin: 8px 0 0;
+  opacity: 0.9;
+  font-size: 16px;
+}
+
+.insurance-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  border: 2px solid #e0e0e0;
+  padding: 15px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 200px;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #1a73e8;
+  color: #1a73e8;
+}
+
+.tab-btn.active {
+  background-color: #1a73e8;
+  color: white;
+  border-color: #1a73e8;
+  box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+}
+
+.tab-btn i {
+  font-size: 20px;
+}
+
+.insurance-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  min-height: 500px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .insurance-management {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .admin-main {
+    margin-right: 0;
+  }
+  
+  .insurance-header {
+    padding: 20px;
+  }
+  
+  .insurance-header h1 {
+    font-size: 24px;
+  }
+  
+  .insurance-tabs {
+    flex-direction: column;
+  }
+  
+  .tab-btn {
+    min-width: 100%;
+  }
+  
+  .insurance-content {
+    padding: 20px;
+  }
+}
+
+/* Loader Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.insurance-content > div {
+  animation: fadeIn 0.4s ease-out;
+}

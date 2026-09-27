@@ -1,0 +1,184 @@
+
+import axios from "axios"
+import { useLoadingStore } from "../store/loading.store";
+
+
+// function readCookie(name: string): string | undefined {
+//   if (typeof document === 'undefined') return undefined;
+//   const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+//   const match = document.cookie.match(new RegExp(`(?:^|; )${escaped}=([^;]*)`));
+//   return match ? decodeURIComponent(match[1]) : undefined;
+// }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// let storedCsrfToken: string | null = null;
+
+
+
+
+let refreshPromise: Promise<void> | null = null;
+let sessionExpiredEmitted = false;
+
+
+
+const apiClient=axios.create({
+    baseURL:import.meta.env['VITE_API_BASE_URL'],
+    timeout:10000,
+    withCredentials:true,
+    xsrfCookieName:import.meta.env["VITE_XSRF_COOKIE_NAME"],
+    xsrfHeaderName:import.meta.env["VITE_XSRF_HEADER_NAME"]
+})
+
+function captureCsrfFromHeaders(headers:unknown){
+      if (!headers || typeof headers !== 'object') return;
+  const h = headers as Record<string, unknown>;
+  const token = h['x-csrf-token'] ?? h['X-CSRF-Token'];
+  if (typeof token === 'string' && token.trim()) {
+    localStorage.setItem(import.meta.env["VITE_XSRF_HEADER_NAME"],token.trim())
+    storedCsrfToken = token.trim();
+  }
+}
+
+// ذخیرهٔ توکن CSRF از هدر پاسخ (لاگین/رفرش/me)
+apiClient.interceptors.response.use(
+  (response) => {
+    captureCsrfFromHeaders(response.headers);
+  useLoadingStore.getState().hide()
+    return response;
+  },
+  (error) =>{
+
+    useLoadingStore.getState().hide()
+    return Promise.reject(error)} 
+);
+
+
+
+apiClient.interceptors.request.use((config) => {
+  useLoadingStore.getState().show();
+
+  const method = (config.method ?? 'get').toLowerCase();
+  const isSafe = method === 'get' || method === 'head' || method === 'options';
+  if (isSafe) return config;
+
+
+  const existing = config.headers?.[import.meta.env["VITE_XSRF_HEADER_NAME"]!];
+
+if (typeof existing === 'string') {
+  captureCsrfFromHeaders(config.headers)
+  
+  return config;
+}
+  const token =
+      localStorage.getItem(import.meta.env["VITE_XSRF_HEADER_NAME"])
+
+
+  if (token) {
+
+    
+    config.headers = config.headers ?? {};
+    config.headers[import.meta.env['VITE_XSRF_HEADER_NAME']!] = token;
+  }
+  
+  return config;
+});
+
+const refreshClient = axios.create({
+  baseURL: import.meta.env["VITE_API_BASE_URL"],
+  timeout: 10000,
+  withCredentials: true,
+});
+
+
+function isSkippableAuthEndpoint(url?: string): boolean {
+  if (!url) return false;
+  // Skip refresh/loop on auth endpoints except `me`
+  return /\/auth\/(therapist)\/(login|register|logout|refresh)\b/.test(url);
+}
+
+function isAuthFailure(err: unknown): boolean {
+  if (!axios.isAxiosError(err)) return false;
+  const status = err.response?.status;
+  return status === 401 || status === 403;
+}
+
+async function refreshAs(): Promise<void> {
+  const res = await refreshClient.post(`/auth/admin/refresh`);
+
+captureCsrfFromHeaders(res.headers);
+
+  
+ 
+
+}
+
+
+async function refreshSessionSingleFlight(): Promise<void> {
+  if (refreshPromise) return refreshPromise;
+
+  refreshPromise = (async () => {
+
+ 
+      
+      await refreshAs();
+    
+
+    try {
+      await refreshAs();
+    } catch (err) {
+      if (isAuthFailure(err)) {
+        await refreshAs();
+        return;
+      }
+      throw err;
+    }
+  })();
+
+  try {
+    await refreshPromise;
+  } finally {
+    refreshPromise = null;
+  }
+}
+
+function emitSessionExpiredOnce() {
+  if (sessionExpiredEmitted) return;
+  sessionExpiredEmitted = true;
+  try {
+    window.dispatchEvent(new CustomEvent('auth:session-expired'));
+  } catch {
+    // ignore
+  
+  }}
+
+  apiClient.interceptors.response.use(
+  (response) => {
+     useLoadingStore.getState().hide(); 
+    return response
+
+  },
+  async (error) => {
+    useLoadingStore.getState().hide();
+    if (!axios.isAxiosError(error)) return Promise.reject(error);
+
+    const status = error.response?.status;
+    const config = error.config as (typeof error.config & { __isRetry?: boolean }) | undefined;
+    if (status !== 401 || !config) return Promise.reject(error);
+
+    // Avoid infinite loop on auth endpoints
+    if (isSkippableAuthEndpoint(config.url)) return Promise.reject(error);
+
+    if (config.__isRetry) return Promise.reject(error);
+    config.__isRetry = true;
+
+    try {
+      await refreshSessionSingleFlight();
+    } catch {
+      emitSessionExpiredOnce();
+      return Promise.reject(error);
+    }
+
+    return apiClient.request(config);
+  }
+);
+
+export default apiClient

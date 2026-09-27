@@ -1,0 +1,535 @@
+/* AdvancedSettings.css */
+
+/* کانتینر اصلی */
+.settings-container {
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 30px 20px;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+
+/* کارت اصلی */
+.settings-card {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid #e9ecef;
+}
+
+/* هدر */
+.settings-header {
+  background: rgb(203, 248, 198);
+  padding: 30px 40px;
+  border-bottom: 1px solid #e9ecef;
+  position: relative;
+}
+
+.settings-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-icon {
+  font-size: 1.8rem;
+  color: #4a6cf7;
+}
+
+.settings-subtitle {
+  margin: 8px 0 0 0;
+  color: #6c757d;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* نوار تب‌ها */
+.tabs-navigation {
+  display: flex;
+  background: #effaf9;
+  padding: 0;
+  border-bottom: 1px solid #dee2e6;
+  position: relative;
+}
+
+.tab-button {
+  position: relative;
+  padding: 18px 30px;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab-button:hover {
+  color: #495057;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.tab-button.active {
+  color: #4a6cf7;
+  border-bottom-color: #4a6cf7;
+  background: white;
+  font-weight: 600;
+}
+
+.tab-button.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: #4a6cf7;
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+}
+
+/* محتوای تب‌ها */
+.tab-content-wrapper {
+  padding: 40px;
+  background: rgb(234, 246, 249);
+  min-height: 500px;
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* محتوای هر تب */
+.settings-section {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  border: 1px solid #e9ecef;
+  transition: border-color 0.2s ease;
+}
+
+.settings-section:hover {
+  border-color: #4a6cf7;
+}
+
+.settings-section h3 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-icon {
+  color: #4a6cf7;
+  font-size: 1.1rem;
+}
+
+/* فرم‌ها و اینپوت‌ها */
+.setting-item {
+  margin-bottom: 20px;
+}
+
+.setting-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #495057;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.setting-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: white;
+  color: #495057;
+}
+
+.setting-input:focus {
+  outline: none;
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+.setting-input:hover {
+  border-color: #adb5bd;
+}
+
+/* دکمه‌ها */
+.setting-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-primary {
+  background: #4a6cf7;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background: #3a5ce5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 108, 247, 0.2);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: white;
+  color: #4a6cf7;
+  border: 1px solid #4a6cf7;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: #f8f9fa;
+  color: #3a5ce5;
+  border-color: #3a5ce5;
+}
+
+/* لیست آرشیو */
+.archived-list {
+  display: grid;
+  gap: 12px;
+}
+
+.archived-item {
+  background: white;
+  border-radius: 8px;
+  padding: 18px 20px;
+  border: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.archived-item:hover {
+  border-color: #4a6cf7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.item-info h4 {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.item-meta {
+  color: #6c757d;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 15px;
+}
+
+.item-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* بارگذاری و حالت‌های خالی */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  color: #6c757d;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f1f3f5;
+  border-top: 3px solid #4a6cf7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #6c757d;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+
+.empty-state h3 {
+  margin: 0 0 10px 0;
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 0.9rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* گروه فیلترها */
+.filter-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.filter-input {
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  min-width: 200px;
+}
+
+.filter-select {
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: white;
+  color: #495057;
+}
+
+/* نوار وضعیت */
+.status-badge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-archived {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-active {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* رسپانسیو */
+@media (max-width: 992px) {
+  .settings-container {
+    padding: 20px 15px;
+  }
+  
+  .settings-header,
+  .tab-content-wrapper {
+    padding: 25px;
+  }
+  
+  .archived-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .item-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .tabs-navigation {
+    flex-direction: column;
+  }
+  
+  .tab-button {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e9ecef;
+    border-left: 3px solid transparent;
+    justify-content: flex-start;
+  }
+  
+  .tab-button.active {
+    border-left-color: #4a6cf7;
+    border-bottom-color: #e9ecef;
+    background: #f8f9fa;
+  }
+  
+  .tab-content-wrapper {
+    padding: 20px;
+  }
+  
+  .settings-section {
+    padding: 20px;
+  }
+  
+  .setting-actions {
+    flex-direction: column;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .filter-group {
+    flex-direction: column;
+  }
+  
+  .filter-input,
+  .filter-select {
+    width: 100%;
+  }
+}
+
+/* انیمیشن‌های ظریف */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+/* اسکرول بار به حالت معمولی (دست نخورده) */
+/* کامنت شده چون خواستی عوض نشه */
+/*
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+*/
+
+/* کمک‌کننده‌ها */
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-info {
+  color: #17a2b8 !important;
+}
+
+.mb-0 { margin-bottom: 0 !important; }
+.mt-1 { margin-top: 0.25rem !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-3 { margin-top: 1rem !important; }
+.mb-1 { margin-bottom: 0.25rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.mb-3 { margin-bottom: 1rem !important; }

@@ -1,0 +1,916 @@
+/* InsuranceReports.css - FINAL FIXED VERSION */
+.insurance-reports {
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+  width: 100%;
+  max-width: none;
+  overflow-x: auto;
+  box-sizing: border-box;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reports-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .reports-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.reports-header h2 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .reports-header h2 {
+    text-align: right;
+    width: auto;
+  }
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .tab-buttons {
+    width: auto;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+  }
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  border: 1px solid #dee2e6;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  flex: 1;
+  justify-content: center;
+  min-width: 160px;
+}
+
+@media (min-width: 768px) {
+  .tab-btn {
+    flex: none;
+    min-width: 180px;
+  }
+}
+
+.tab-btn:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(106, 17, 203, 0.3);
+}
+
+.tab-btn i {
+  font-size: 1.1rem;
+}
+
+.search-panel {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .search-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.search-header h3 {
+  color: white;
+  margin: 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .search-header h3 {
+    width: auto;
+  }
+}
+
+.search-actions {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .search-actions {
+    width: auto;
+  }
+}
+
+.btn-search, .btn-clear {
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  flex: 1;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .btn-search, .btn-clear {
+    flex: none;
+    min-width: 150px;
+  }
+}
+
+.btn-search {
+  background-color: white;
+  color: #6a11cb;
+}
+
+.btn-search:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.btn-clear {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-clear:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .filters-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.filter-group label {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 12px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+  outline: none;
+  border-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-group select option {
+  color: #333;
+  background: white;
+}
+
+.filter-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.insurance-reports .summary-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 480px) {
+  .insurance-reports .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .insurance-reports .summary-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .insurance-reports .summary-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .insurance-reports .summary-cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.insurance-reports .summary-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.insurance-reports .summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.insurance-reports .card-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.insurance-reports .card-content {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.insurance-reports .card-content h4 {
+  margin: 0 0 3px 0;
+  color: #495057;
+  font-size: 9px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+
+.insurance-reports .card-value {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.results-section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+.results-header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .results-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.results-header h3 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .results-header h3 {
+    text-align: right;
+    width: auto;
+  }
+}
+
+.export-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .export-buttons {
+    width: auto;
+    justify-content: flex-end;
+  }
+}
+
+.btn-export {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  flex: 1;
+  justify-content: center;
+  max-width: 200px;
+}
+
+@media (min-width: 768px) {
+  .btn-export {
+    flex: none;
+    min-width: 140px;
+  }
+}
+
+.btn-export.excel {
+  background: linear-gradient(135deg, #21a366 0%, #138d75 100%);
+  color: white;
+}
+
+.btn-export.excel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 163, 102, 0.4);
+}
+
+.btn-export.pdf {
+  background: linear-gradient(135deg, #ff5252 0%, #ff867f 100%);
+  color: white;
+}
+
+.btn-export.pdf:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 82, 82, 0.4);
+}
+
+/* اصلاح جدول اصلی */
+.results-table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 25px;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  display: block;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  font-size: 12px;
+  table-layout: auto;
+}
+
+/* تنظیم عرض ستون‌ها */
+.results-table th:nth-child(1), .results-table td:nth-child(1) { width: 150px; } /* شرکت بیمه */
+.results-table th:nth-child(2), .results-table td:nth-child(2) { width: 100px; } /* کد قرارداد */
+.results-table th:nth-child(3), .results-table td:nth-child(3) { width: 120px; } /* مسئول */
+.results-table th:nth-child(4), .results-table td:nth-child(4) { width: 120px; } /* تلفن */
+.results-table th:nth-child(5), .results-table td:nth-child(5) { width: 100px; } /* وضعیت */
+.results-table th:nth-child(6), .results-table td:nth-child(6) { width: 120px; } /* بدهی کل */
+.results-table th:nth-child(7), .results-table td:nth-child(7) { width: 120px; } /* واریزی کل */
+.results-table th:nth-child(8), .results-table td:nth-child(8) { width: 120px; } /* مانده حساب */
+.results-table th:nth-child(9), .results-table td:nth-child(9) { width: 120px; } /* واریزی دوره */
+.results-table th:nth-child(10), .results-table td:nth-child(10) { width: 100px; } /* جلسات بیمه‌ای */
+.results-table th:nth-child(11), .results-table td:nth-child(11) { width: 120px; } /* مبلغ کل جلسات */
+.results-table th:nth-child(12), .results-table td:nth-child(12) { width: 120px; } /* پرداختی بیمه */
+.results-table th:nth-child(13), .results-table td:nth-child(13) { width: 120px; } /* باقیمانده */
+.results-table th:nth-child(14), .results-table td:nth-child(14) { width: 100px; } /* تاریخ */
+.results-table th:nth-child(15), .results-table td:nth-child(15) { width: 150px; } /* خدمات */
+
+.results-table th {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #2c3e50;
+  font-weight: 700;
+  padding: 8px 6px;
+  text-align: right;
+  border-bottom: 2px solid #dee2e6;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.results-table th:hover {
+  background-color: #e9ecef;
+}
+
+.results-table th i {
+  margin-right: 6px;
+  font-size: 10px;
+}
+
+.results-table td {
+  padding: 6px 4px;
+  border-bottom: 1px solid #eee;
+  color: #555;
+  vertical-align: middle;
+  white-space: normal;
+  word-wrap: break-word;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.results-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.results-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* استایل‌های سلول‌ها */
+.insurance-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  min-width: 120px;
+  font-size: 9px;
+}
+
+.insurance-cell i {
+  color: #6a11cb;
+  font-size: 14px;
+}
+
+.amount-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-weight: 600;
+  min-width: 100px;
+  font-size: 9px;
+}
+
+.amount-cell small {
+  color: #6c757d;
+  font-size: 8px;
+  font-weight: normal;
+}
+
+.debt-amount {
+  color: #ff5252;
+}
+
+.paid-amount {
+  color: #4caf50;
+}
+
+.balance-amount.positive {
+  color: #4caf50;
+}
+
+.balance-amount.negative {
+  color: #ff5252;
+}
+
+.period-amount {
+  color: #9c27b0;
+}
+
+.period-count {
+  font-size: 11px;
+  color: #6c757d;
+  font-weight: normal;
+}
+
+.session-count {
+  font-weight: 600;
+  color: #2196f3;
+  text-align: center;
+  min-width: 60px;
+}
+
+.total-amount {
+  color: #2c3e50;
+}
+
+.insurance-share {
+  color: #00b894;
+}
+
+.remaining-amount {
+  color: #ff9800;
+  font-weight: 700;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 15px;
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 80px;
+  justify-content: center;
+}
+
+.status-paid {
+  background-color: rgba(0, 184, 148, 0.1);
+  color: #00b894;
+  border: 1px solid #00b894;
+}
+
+.status-pending {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ff9800;
+  border: 1px solid #ff9800;
+}
+
+.status-rejected {
+  background-color: rgba(255, 87, 34, 0.1);
+  color: #ff5722;
+  border: 1px solid #ff5722;
+}
+
+.coverage-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  min-width: 120px;
+}
+
+.coverage-tag {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 3px 6px;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.coverage-tag.more {
+  background-color: #f5f5f5;
+  color: #757575;
+}
+
+.loading-cell {
+  text-align: center;
+  padding: 40px !important;
+  color: #6c757d;
+  font-size: 16px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 50px 20px;
+  color: #adb5bd;
+}
+
+.no-results i {
+  font-size: 50px;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+.no-results p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  align-items: center;
+}
+
+.pagination-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-info {
+  color: #6c757d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  background-color: white;
+  color: #495057;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-number:hover {
+  background-color: #f8f9fa;
+}
+
+.page-number.active {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border-color: #6a11cb;
+}
+
+/* مخفی کردن ستون‌های غیرضروری */
+@media (max-width: 768px) {
+  .insurance-reports {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .admin-main {
+    margin-right: 0;
+  }
+
+  .results-table {
+    min-width: 600px;
+  }
+
+  /* تنظیم عرض ستون‌های نمایش داده شده */
+  .results-table th:nth-child(1), .results-table td:nth-child(1) { width: 120px; } /* شرکت بیمه */
+  .results-table th:nth-child(2), .results-table td:nth-child(2) { width: 80px; } /* کد */
+  .results-table th:nth-child(5), .results-table td:nth-child(5) { width: 80px; } /* وضعیت */
+  .results-table th:nth-child(6), .results-table td:nth-child(6) { width: 100px; } /* بدهی */
+  .results-table th:nth-child(7), .results-table td:nth-child(7) { width: 100px; } /* واریزی */
+  .results-table th:nth-child(8), .results-table td:nth-child(8) { width: 100px; } /* مانده */
+  .results-table th:nth-child(10), .results-table td:nth-child(10) { width: 60px; } /* جلسات */
+  .results-table th:nth-child(11), .results-table td:nth-child(11) { width: 100px; } /* مبلغ کل */
+  .results-table th:nth-child(12), .results-table td:nth-child(12) { width: 100px; } /* پرداختی بیمه */
+  .results-table th:nth-child(13), .results-table td:nth-child(13) { width: 100px; } /* باقیمانده */
+
+  /* مخفی کردن ستون‌های کم‌اهمیت برای موبایل */
+  .results-table th:nth-child(3), /* مسئول */
+  .results-table td:nth-child(3),
+  .results-table th:nth-child(4), /* تلفن */
+  .results-table td:nth-child(4),
+  .results-table th:nth-child(9), /* واریزی دوره */
+  .results-table td:nth-child(9),
+  .results-table th:nth-child(14), /* تاریخ */
+  .results-table td:nth-child(14),
+  .results-table th:nth-child(15) { /* خدمات */
+  .results-table td:nth-child(15) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .insurance-reports {
+    padding: 10px;
+  }
+  
+  .search-panel {
+    padding: 15px;
+  }
+  
+  .results-section {
+    padding: 15px;
+  }
+  
+  .results-table {
+    min-width: 1000px;
+  }
+  
+  .results-table th,
+  .results-table td {
+    padding: 4px 3px;
+    font-size: 8px;
+  }
+}
+
+/* Scrollbar Styling */
+.results-table-container::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.results-table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.results-table-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  border-radius: 4px;
+}
+
+.results-table-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+}
+
+/* Fix برای نمایش RTL */
+.insurance-reports {
+  direction: rtl;
+}
+
+.amount-cell {
+  align-items: flex-start;
+}
+
+/* تنظیمات overflow برای اسکرول افقی */
+.insurance-reports {
+  overflow-x: auto !important;
+}
+
+/* DatePicker Styles */
+.rmdp-container {
+  width: 100% !important;
+}
+
+.rmdp-input {
+  width: 100% !important;
+  padding: 8px 12px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  background-color: white !important;
+  color: #333 !important;
+  font-family: inherit !important;
+  direction: rtl !important;
+}
+
+.rmdp-input:focus {
+  outline: none !important;
+  border-color: #1a73e8 !important;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2) !important;
+}
+
+/* Ensure DatePicker input shows selected value properly */
+.rmdp-input {
+  color: #333 !important;
+}
+
+.rmdp-input:placeholder-shown {
+  color: #999 !important;
+}
+
+.results-table-container {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+}

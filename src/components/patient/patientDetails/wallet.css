@@ -1,0 +1,369 @@
+.wallet-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.wallet-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 550px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.wallet-modal-close {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6c757d;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.wallet-modal-close:hover {
+  background: #f8f9fa;
+  color: #dc3545;
+}
+
+.wallet-modal-title {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.wallet-info-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.wallet-balance-label {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.wallet-balance-amount {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.wallet-form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.transaction-type-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.transaction-type-radio {
+  display: none;
+}
+
+.transaction-type-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex: 1;
+}
+
+.transaction-type-button {
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.transaction-type-radio:checked + .transaction-type-button {
+  border-color: currentColor;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.transaction-type-deposit {
+  background: #d4edda;
+  color: #155724;
+}
+
+.transaction-type-deposit.selected {
+  background: #28a745;
+  color: white;
+}
+
+.transaction-type-withdraw {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.transaction-type-withdraw.selected {
+  background: #dc3545;
+  color: white;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-input.error {
+  border-color: #dc3545;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  min-height: 80px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-textarea.error {
+  border-color: #dc3545;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin: 5px 0 0 0;
+}
+
+.quick-amounts-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.quick-amounts-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.quick-amount-button {
+  padding: 8px 16px;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  background: white;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.quick-amount-button:hover {
+  background: #007bff;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.quick-amount-all {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.quick-amount-all:hover {
+  background: #28a745;
+  color: white;
+}
+
+.transaction-summary {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #e7f3ff;
+  border-radius: 8px;
+  border: 1px solid #b3d9ff;
+}
+
+.transaction-summary-title {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  color: #0056b3;
+}
+
+.transaction-summary-item {
+  margin: 6px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.transaction-summary-label {
+  color: #495057;
+}
+
+.transaction-summary-value {
+  font-weight: 600;
+}
+
+.transaction-summary-positive {
+  color: #28a745;
+}
+
+.transaction-summary-negative {
+  color: #dc3545;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.cancel-button {
+  padding: 12px 24px;
+  border: 2px solid #6c757d;
+  border-radius: 8px;
+  background: white;
+  color: #6c757d;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cancel-button:hover {
+  background: #6c757d;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.submit-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none !important;
+}
+
+.submit-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button-deposit {
+  background: #28a745;
+}
+
+.submit-button-deposit:hover:not(:disabled) {
+  background: #218838;
+}
+
+.submit-button-withdraw {
+  background: #dc3545;
+}
+
+.submit-button-withdraw:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wallet-modal {
+    padding: 20px;
+    margin: 20px;
+    width: calc(100% - 40px);
+  }
+  
+  .transaction-type-group {
+    flex-direction: column;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .cancel-button,
+  .submit-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,773 @@
+/* InsuranceContracts.css - FINAL FIXED VERSION */
+.insurance-contracts {
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+  width: 100%;
+  max-width: none;
+  overflow-x: auto;
+  box-sizing: border-box;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+@media (min-width: 768px) {
+  .section-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.section-header h2 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section-header h2 {
+    text-align: right;
+  }
+}
+
+.btn-add {
+  background: linear-gradient(135deg, #00b894 0%, #00d2a4 100%);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .btn-add {
+    width: auto;
+  }
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 184, 148, 0.4);
+}
+
+.btn-add:active {
+  transform: translateY(0);
+}
+
+.btn-add:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-contract-form {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  border: 2px dashed #6c8ef5;
+  animation: slideDown 0.4s ease-out;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.add-contract-form h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input {
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6c8ef5;
+  box-shadow: 0 0 0 3px rgba(108, 142, 245, 0.1);
+}
+
+.coverage-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  border: 2px solid #eee;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+}
+
+@media (max-width: 480px) {
+  .checkbox-label {
+    min-width: 100%;
+  }
+}
+
+.checkbox-label:hover {
+  background-color: #e9ecef;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+@media (min-width: 576px) {
+  .form-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #1a73e8 0%, #6c8ef5 100%);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .btn-submit {
+    width: auto;
+  }
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background-color: #e0e0e0;
+  color: #666;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .btn-cancel {
+    width: auto;
+  }
+}
+
+.btn-cancel:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+/* جدول قراردادها */
+.contracts-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.contracts-table {
+  width: auto;
+  border-collapse: collapse;
+  min-width: 800px;
+  font-size: 13px;
+  table-layout: auto;
+}
+
+.contracts-table th {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #2c3e50;
+  font-weight: 700;
+  padding: 12px 10px;
+  text-align: right;
+  border-bottom: 2px solid #dee2e6;
+  font-size: 14px;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.contracts-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+  color: #555;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.contracts-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.contracts-table tr:last-child td {
+  border-bottom: none;
+}
+
+.contract-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+  min-width: 150px;
+}
+
+.contract-name i {
+  color: #1a73e8;
+  font-size: 18px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 70px;
+}
+
+.status-active {
+  background-color: rgba(0, 184, 148, 0.1);
+  color: #00b894;
+  border: 1px solid #00b894;
+}
+
+.status-pending {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ff9800;
+  border: 1px solid #ff9800;
+}
+
+.status-expired {
+  background-color: rgba(255, 87, 34, 0.1);
+  color: #ff5722;
+  border: 1px solid #ff5722;
+}
+
+.coverage-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-width: 200px;
+  min-width: 150px;
+}
+
+.coverage-tag {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.discount-badge {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  color: #d32f2f;
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-block;
+  min-width: 50px;
+  text-align: center;
+}
+
+.amount-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-weight: 600;
+  min-width: 120px;
+}
+
+.amount-cell small {
+  color: #6c757d;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.debt-amount {
+  color: #ff5252;
+}
+
+.paid-amount {
+  color: #4caf50;
+}
+
+.balance-amount.positive {
+  color: #4caf50;
+}
+
+.balance-amount.negative {
+  color: #ff5252;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.btn-view {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.btn-view:hover {
+  background-color: #bbdefb;
+  transform: translateY(-2px);
+}
+
+.btn-edit {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.btn-edit:hover {
+  background-color: #e1bee7;
+  transform: translateY(-2px);
+}
+
+.btn-delete {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.btn-delete:hover {
+  background-color: #ffcdd2;
+  transform: translateY(-2px);
+}
+
+.no-data {
+  text-align: center;
+  padding: 50px 20px;
+  color: #999;
+}
+
+.no-data i {
+  font-size: 50px;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+.no-data p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+@media (min-width: 768px) {
+  .pagination {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.pagination-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  background-color: white;
+  color: #495057;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-number:hover {
+  background-color: #f8f9fa;
+}
+
+.page-number.active {
+  background: linear-gradient(135deg, #1a73e8 0%, #6c8ef5 100%);
+  color: white;
+  border-color: #1a73e8;
+}
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  z-index: 1000;
+}
+
+.insurance-contracts {
+  direction: rtl;
+}
+
+.contracts-table th,
+.contracts-table td {
+  text-align: right;
+}
+
+.amount-cell {
+  align-items: flex-start;
+}
+
+/* مخفی کردن ستون‌ها در موبایل */
+@media (max-width: 768px) {
+  .insurance-contracts {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .admin-main {
+    margin-right: 0;
+  }
+
+  .add-contract-form {
+    padding: 15px;
+  }
+
+  .contracts-table {
+    min-width: 700px;
+  }
+
+  .contracts-table th,
+  .contracts-table td {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  /* مخفی کردن ستون‌های غیرضروری */
+  .contracts-table th:nth-child(3),
+  /* مسئول */
+  .contracts-table td:nth-child(3),
+  .contracts-table th:nth-child(4),
+  /* تلفن */
+  .contracts-table td:nth-child(4),
+  .contracts-table th:nth-child(7),
+  /* خدمات تحت پوشش */
+  .contracts-table td:nth-child(7),
+  .contracts-table th:nth-child(8),
+  /* درصد تخفیف */
+  .contracts-table td:nth-child(8),
+  .contracts-table th:nth-child(12),
+  /* آخرین واریزی */
+  .contracts-table td:nth-child(12) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .contracts-table {
+    min-width: 600px;
+  }
+
+  .contracts-table th,
+  .contracts-table td {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+
+  /* مخفی کردن بیشتر ستون‌ها */
+  .contracts-table th:nth-child(9),
+  /* مجموع بدهی */
+  .contracts-table td:nth-child(9),
+  .contracts-table th:nth-child(10),
+  /* مجموع واریزی */
+  .contracts-table td:nth-child(10),
+  .contracts-table th:nth-child(11) {
+
+    /* مانده حساب */
+    .contracts-table td:nth-child(11) {
+      display: none;
+    }
+  }
+}
+  /* حذف position و widthهای مشکل‌ساز */
+  .insurance-contracts,
+  .add-contract-form,
+  .contracts-table-container {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* DatePicker Styles */
+  .rmdp-container {
+    width: 100% !important;
+  }
+
+  .rmdp-input {
+    width: 100% !important;
+    padding: 8px 12px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    background-color: white !important;
+    color: #333 !important;
+    font-family: inherit !important;
+    direction: rtl !important;
+  }
+
+  .rmdp-input:focus {
+    outline: none !important;
+    border-color: #1a73e8 !important;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2) !important;
+  }
+
+  /* Ensure DatePicker input shows selected value properly */
+  .rmdp-input {
+    color: #333 !important;
+  }
+
+  .rmdp-input:placeholder-shown {
+    color: #999 !important;
+  }
+
+
+
+  /* اضافه کردن به InsuranceContracts.css */
+  .date-picker-input {
+    width: 100% !important;
+    padding: 12px 15px !important;
+    border: 2px solid #ddd !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    background-color: white !important;
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+  }
+
+  .date-picker-input:focus {
+    outline: none !important;
+    border-color: #6c8ef5 !important;
+    box-shadow: 0 0 0 3px rgba(108, 142, 245, 0.1) !important;
+  }
+
+  .rmdp-calendar {
+    font-family: inherit !important;
+  }
+
+  .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
+    background-color: #f0f0f0 !important;
+  }
+
+  .rmdp-day.rmdp-selected span {
+    background-color: #6c8ef5 !important;
+    color: white !important;
+  }
+
+  .rmdp-day.rmdp-today span {
+    color: #6c8ef5 !important;
+    font-weight: bold !important;
+  }

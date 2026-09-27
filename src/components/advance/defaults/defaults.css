@@ -1,0 +1,268 @@
+/* فیلترها */
+.filter-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.filter-input,
+.filter-select {
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  min-width: 180px;
+  background: white;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+/* جدول قیمت‌ها */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 0.9rem;
+}
+
+.price-table th {
+  background: #f8f9fa;
+  padding: 2px 2px;
+  border: 1px solid #dee2e6;
+  font-weight: 600;
+  color: #495057;
+  min-width: 10px;
+}
+
+.price-table td {
+  padding: 2px;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.price-table tr:hover td {
+  background-color: rgba(74, 108, 247, 0.05);
+}
+
+/* دکمه‌های اکشن */
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.btn-icon:hover {
+  background: #e9ecef;
+  transform: scale(1.1);
+}
+
+.btn-icon.delete:hover {
+  background: #f8d7da;
+  color: #dc3545;
+}
+
+/* دکمه افزودن */
+.add-price-btn {
+  background: white;
+  border: 1px dashed #4a6cf7;
+  color: #4a6cf7;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.add-price-btn:hover {
+  background: #4a6cf7;
+  color: white;
+  border-style: solid;
+}
+
+/* حالت ویرایش */
+.editing-input {
+  width: 100px;
+  padding: 5px;
+  border: 2px solid #4a6cf7;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* حالت‌های مختلف */
+.price-cell-empty {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.price-cell-has-price {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+/* ─── Responsive ─────────────────────────────── */
+
+/* تبلت بزرگ */
+@media (max-width: 1200px) {
+  .price-table {
+    font-size: 0.8rem;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding: 2px 2px;
+    min-width: 70px;
+  }
+
+  .filter-group {
+    flex-direction: column;
+  }
+
+  .filter-input,
+  .filter-select {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* تبلت کوچک */
+@media (max-width: 900px) {
+  /* هدر: دکمه‌ها زیر هم */
+  .settings-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px;
+  }
+
+  .settings-header-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .settings-header-actions .btn-secondary,
+  .settings-header-actions .btn-primary {
+    flex: 1;
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 8px 6px;
+  }
+
+  /* جدول: اسکرول افقی با نشانگر بصری */
+  .price-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+ 
+  }
+
+  .price-table-wrapper::after {
+    content: '← اسکرول کنید →';
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #6c757d;
+    padding: 4px 0 6px;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+  }
+
+  .price-table {
+    margin: 0;
+    border: none;
+    min-width: 250px;
+  }
+}
+
+/* موبایل: جدول → کارت */
+@media (max-width: 600px) {
+  /* مخفی کردن thead */
+  .price-table thead {
+    display: none;
+    overflow: visible;
+  }
+
+  .price-table,
+  .price-table tbody,
+  .price-table tr,
+  .price-table td {
+    display: block;
+    width: 250px;
+  }
+
+  /* هر ردیف = یک کارت */
+  .price-table tr {
+    margin-bottom: 16px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  /* اولین td = هدر کارت */
+  .price-table td:first-child {
+    background: #4a6cf7;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 2px 2px;
+    text-align: right;
+  }
+
+  /* بقیه td‌ها: label از data-label می‌آد */
+  .price-table td:not(:first-child) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 2px;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: right;
+    font-size: 0.88rem;
+    max-width: 250px;
+  }
+
+  .price-table td:not(:first-child):last-child {
+    border-bottom: none;
+  }
+
+  /* label مدت زمان */
+  .price-table td:not(:first-child)::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6c757d;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    margin-left: 10px;
+  }
+
+  /* اینپوت ویرایش */
+  .price-table td input[type='number'] {
+    width: 80px !important;
+  }
+
+  /* فیلترها */
+  .filter-input,
+  .filter-select {
+    font-size: 1rem;
+    padding: 12px 14px;
+  }
+
+  /* بخش راهنما */
+  .settings-section ul {
+    padding-right: 16px;
+    font-size: 0.88rem;
+  }
+}

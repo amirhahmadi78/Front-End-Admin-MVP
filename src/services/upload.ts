@@ -1,0 +1,16 @@
+
+import apiClient from "../api/client";
+
+export const uploadFileToServer = async (file: File): Promise<string> => {
+  const formData = new FormData();
+  formData.append("file", file); // کلید ارسالی باید 'file' باشد
+
+  const res = await apiClient.post("/upload", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+  // آدرس ذخیره‌شده نهایی روی S3 که بک‌اند برمی‌گرداند
+  return res.data
+};

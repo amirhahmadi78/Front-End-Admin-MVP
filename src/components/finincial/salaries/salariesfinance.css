@@ -1,0 +1,175 @@
+.salaries-finance {
+  padding: 25px;
+  font-family: 'Vazir', sans-serif;
+  background-color: #f9fafb;
+  border-radius: 15px;
+}
+
+.finance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-box {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+}
+
+.transaction-box h4 {
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-grid input,
+.form-grid select {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.submit-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.transactions-table {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.transactions-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table th, .transactions-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.transactions-table th {
+  background-color: #1e293b;
+  color: #fff;
+}
+
+.green {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.red {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+
+/* حذف فلش‌های بالا و پایین در فیلدهای عددی (برای Chrome, Edge, Safari) */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* برای Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* ---------- Legend ---------- */
+
+.legend {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0 15px;
+}
+
+.legend-item {
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: white!important;;
+  font-size: 14px;
+}
+
+.legend-item.green { background: #16a34a; }
+.legend-item.red { background: #dc2626; }
+.legend-item.yellow { background: #f59e0b; }
+
+/* ---------- Therapist Grid ---------- */
+
+.therapist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.therapist-card {
+  
+  padding: 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: rgb(255, 255, 255)!important;
+  transition: 0.25s;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.therapist-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+.therapist-card.green { background: #16a34a; }
+.therapist-card.red { background: #dc2626; }
+.therapist-card.yellow { background: #f59e0b; }
+.therapist-card.black { background: #020202; }
+
+/* ---------- Details Box ---------- */
+
+.person-box {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  margin-top: 20px;
+}
+
+.summary-box {
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.green-text { color: #16a34a; }
+.red-text { color: #dc2626; }

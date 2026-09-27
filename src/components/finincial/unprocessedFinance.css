@@ -1,0 +1,233 @@
+.unprocessed-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  width: 100%;
+  overflow-x: auto;
+}
+
+.desc {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.loading,
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #475569;
+}
+
+/* table */
+
+.unprocessed-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 900px;
+}
+
+.unprocessed-table th,
+.unprocessed-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.unprocessed-table th {
+  background: #f8fafc;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.green {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.red {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.ok-status {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.warn-status {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.2s;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+/* modal */
+
+.finance-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  padding: 15px;
+}
+
+.finance-modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.toggle-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.save-btn {
+  background: #16a34a;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1024px) {
+
+  .unprocessed-container {
+    padding: 15px;
+  }
+
+  .unprocessed-table th,
+  .unprocessed-table td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+
+  .unprocessed-table {
+    min-width: unset;
+    font-size: 0.8rem;
+  }
+
+  .unprocessed-table thead {
+    display: none;
+  }
+
+  .unprocessed-table,
+  .unprocessed-table tbody,
+  .unprocessed-table tr,
+  .unprocessed-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .unprocessed-table tr {
+    background: #f8fafc;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .unprocessed-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 6px 0;
+    font-size: 0.85rem;
+  }
+
+  .unprocessed-table td::before {
+    font-weight: 600;
+    color: #475569;
+  }
+
+  .unprocessed-table td:nth-child(1)::before { content: "تاریخ"; }
+  .unprocessed-table td:nth-child(2)::before { content: "ساعت"; }
+  .unprocessed-table td:nth-child(3)::before { content: "مراجع"; }
+  .unprocessed-table td:nth-child(4)::before { content: "درمانگر"; }
+  .unprocessed-table td:nth-child(5)::before { content: "هزینه"; }
+  .unprocessed-table td:nth-child(6)::before { content: "وضعیت کلینیک"; }
+  .unprocessed-table td:nth-child(7)::before { content: "وضعیت درمانگر"; }
+  .unprocessed-table td:nth-child(8)::before { content: "وضعیت"; }
+  .unprocessed-table td:nth-child(9)::before { content: "عملیات"; }
+
+  .edit-btn {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width: 480px) {
+
+  .desc {
+    font-size: 0.8rem;
+  }
+
+  .finance-modal-content {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .save-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+
+}

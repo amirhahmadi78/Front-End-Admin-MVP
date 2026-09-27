@@ -1,0 +1,435 @@
+
+
+
+
+.finance-tab {
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.finance-tab:hover {
+  background-color: #334155;
+}
+
+.finance-tab.active {
+  background-color: #2563eb;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateX(2px);
+}
+
+/* بخش محتوا */
+.finance-content {
+  flex: 1;
+  padding: 35px 50px;
+  background-color: #f8fafc;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.finance-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+/* JSON */
+.finance-json {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+  /* font-family: 'Courier New', monospace; */
+}
+
+
+/* clinicFinance.css */
+/*  */
+
+.loading, .error {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.total {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #2563eb;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
+
+.pending {
+  color: #f97316;
+  font-weight: bold;
+}
+
+
+/* حذف فلش‌های بالا و پایین در فیلدهای عددی (برای Chrome, Edge, Safari) */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* برای Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* در فایل اصلی App.css یا Layout.css */
+.main-container {
+  width: 100%;
+  max-width: none;
+  overflow-x: auto;
+  position: relative;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.finance-tab {
+  padding: 13px 16px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  transition: all 0.25s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.finance-tab:hover {
+  background-color: #334155;
+  color: #fff;
+}
+
+.finance-tab.active {
+  background-color: #2563eb;
+  color: #fff;
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.35);
+  transform: translateX(-2px);
+}
+
+/* ============================= */
+/* Main Area */
+/* ============================= */
+
+.finance-main {
+  width: 100%;
+  /* min-height: 100vh; */
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  flex: 1!important;
+   height: auto!important;
+}
+
+/* Topbar */
+
+.finance-topbar {
+  width: 100%;
+  padding: 18px 28px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+.finance-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.finance-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  margin: 0;
+  color: #111827;
+  line-height: 1.5;
+}
+
+
+
+س
+
+/* Content */
+.finance-content {
+  flex: 1;
+  width: 100%;
+  padding: 30px 36px;
+  background-color: #f8fafc;
+  overflow-x: auto;
+}
+
+/* ============================= */
+/* JSON */
+/* ============================= */
+
+.finance-json {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+/* ============================= */
+/* Clinic Finance */
+/* ============================= */
+
+.clinic-finance {
+  padding: 28px;
+  background-color: #f8fafc;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.clinic-finance h3 {
+  margin-bottom: 20px;
+  color: #1e293b;
+  font-size: 1.45rem;
+}
+
+.loading,
+.error {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.total {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #2563eb;
+}
+
+
+
+
+/* ============================= */
+/* Tabs (نوار تب‌ها) - جدید */
+/* ============================= */
+
+.finance-tabs-wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 8px 16px; /* کمی فاصله داخلی */
+  /* حذف overflow-x: auto */
+}
+
+.finance-tabs {
+  display: flex;
+  flex-wrap: wrap;        /* ← کلید اصلی: اجازه می‌دهد تب‌ها به خط بعد بروند */
+  justify-content: center; /* یا flex-start برای چینش از راست */
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 6px 10px;          /* فاصله عمودی و افقی بین تب‌ها */
+  min-height: 48px;
+}
+
+.finance-tab {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #64748b;
+  border-bottom: 3px solid transparent;
+  border-radius: 8px;     /* برای زیبایی */
+  transition: all 0.2s ease;
+  user-select: none;
+  white-space: nowrap;    /* متن تب در یک خط بماند */
+}
+
+.finance-tab:hover {
+  color: #1e293b;
+  background-color: #f1f5f9;
+}
+
+.finance-tab.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+  font-weight: 600;
+  background-color: transparent;
+}
+
+
+/* ============================= */
+/* Tables */
+/* ============================= */
+
+
+
+.finance-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.finance-table th,
+.finance-table td {
+  padding: 12px 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.finance-table th {
+  background-color: #1e293b;
+  color: #fff;
+  font-weight: 600;
+}
+
+.finance-table tbody tr:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+.finance-table tbody tr:hover {
+  background-color: #e2e8f0;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
+
+.pending {
+  color: #f97316;
+  font-weight: bold;
+}
+
+/* ============================= */
+/* Inputs */
+/* ============================= */
+
+/* حذف فلش‌های بالا و پایین در فیلدهای عددی برای Chrome, Edge, Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* برای Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ============================= */
+/* Global containers */
+/* ============================= */
+
+.main-container {
+  width: 100%;
+  max-width: none;
+  overflow-x: auto;
+  position: relative;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ============================= */
+/* Responsive */
+/* ============================= */
+
+/* تبلت */
+@media (max-width: 1024px) {
+  .finance-topbar {
+    padding: 16px 22px;
+  }
+
+  .finance-content {
+    padding: 24px;
+  }
+
+  .finance-title {
+    font-size: 1.35rem;
+  }
+
+  .clinic-finance {
+    padding: 22px;
+  }
+}
+
+/* موبایل */
+
+@media (max-width: 768px) {
+  .finance-topbar {
+    padding: 14px 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .finance-title {
+    font-size: 1.15rem;
+    text-align: center;
+  }
+
+
+
+  .finance-tabs-wrapper {
+    padding: 0 10px;
+  }
+
+  .finance-tabs {
+    gap: 2px;
+  }
+
+  .finance-tab {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .finance-content {
+    padding: 18px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .finance-tab {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .finance-title {
+    font-size: 1rem;
+  }
+}

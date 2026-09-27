@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "MyFont";
+  src: url("../assets/fonts/Vazir-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "MyFont", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
