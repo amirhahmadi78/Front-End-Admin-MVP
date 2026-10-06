@@ -8,7 +8,7 @@ interface ExerciseViewModalProps {
 
 // تابع هوشمند برای تشخیص نوع فایل از روی URL
 const getFileTypeByUrl = (url: string) => {
-  const extension = url.split('.').pop()?.toLowerCase();
+  const extension = url?.split('.')?.pop()?.toLowerCase();
   
   const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg','heic'];
   const videoExtensions = ['mp4', 'webm', 'ogg', 'mov'];
@@ -115,7 +115,7 @@ export default function ExerciseViewModal({ exercise, isOpen, onClose }: Exercis
               </h4>
               <div className="grid gap-4! sm:grid-cols-2">
                 {exercise.files.map((file, i) => (
-                  <SmartFileRenderer key={i} url={file.fileURLs} />
+                  <SmartFileRenderer key={i} url={file?.fileURLs} />
                 ))}
               </div>
             </div>
