@@ -27,6 +27,7 @@ export const useWalletDeposit =()=>{
             return [...oldData,data]
     }
     )
+    qc.invalidateQueries( {queryKey: ["patientlist"]})
     }
   }
   )
@@ -46,6 +47,7 @@ export const useWalletwithdraw =()=>{
             return [...oldData,data]
     }
     )
+     qc.invalidateQueries( {queryKey: ["patientlist"]})
     }
   }
   )
@@ -65,6 +67,7 @@ export const useWalletPayment =()=>{
             return [...oldData,data]
     }
     )
+     qc.invalidateQueries( {queryKey: ["patientlist"]})
     }
   }
   )
@@ -85,6 +88,7 @@ export const useWalletCancel =()=>{
             return [...oldData,data]
     }
     )
+     qc.invalidateQueries( {queryKey: ["patientlist"]})
     }
   }
   )

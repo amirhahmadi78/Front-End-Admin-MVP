@@ -1,4 +1,4 @@
-import  { useState, useEffect, useMemo } from "react";
+import  { useState, useEffect, useMemo, type JSXElementConstructor, type Key, type ReactElement, type ReactNode, type ReactPortal, type SetStateAction } from "react";
 import moment from "moment-jalaali";
 
 import Swal from "sweetalert2";
@@ -36,17 +36,17 @@ export default function GroupModal({
     const {mutate:changeGroupStatus}=useChangeGroupStatus()
   // لیست بیماران این گروه
 
-  
+
 const groupPatients = useMemo(() => {
   // ۱. چک کن که لیست خالی نباشد تا برنامه کرش نکند
   if (!patientlist || !appointment?.groupSession?.patients) return [];
 
   // ۲. استفاده از return برای خروجی
-  return patientlist.filter((patient) => {
+  return patientlist.filter((patient: { _id: { toString: () => unknown; }; }) => {
     // تبدیل هر دو طرف به رشته (String) برای اطمینان از مقایسه درست
     const patientId = patient._id?.toString();
     return appointment.groupSession.patients.some(
-      (id) => id?.toString() === patientId
+      (id: { toString: () => never; }) => id?.toString() === patientId
     );
   });
 }, [appointment?.groupSession?.patients, patientlist]);
@@ -68,8 +68,8 @@ const groupPatients = useMemo(() => {
 
 
   // وضعیت پرداخت هر بیمار
-  const getPatientPaymentStatus = (patientId) => {
-    const paidInfo = paidPatients.find(p => p.patientId === patientId || p.id === patientId);
+  const getPatientPaymentStatus = (patientId: any) => {
+    const paidInfo = paidPatients.find((p: { patientId: any; id: any; }) => p.patientId === patientId || p.id === patientId);
     return {
       isPaid: !!paidInfo,
       paymentMethod: paidInfo?.paymentMethod || paidInfo?.payment || null,
@@ -82,11 +82,11 @@ const groupPatients = useMemo(() => {
 
   // محاسبه جمع پرداخت‌ها
   const calculateTotalPaid = () => {
-    return paidPatients.reduce((total, payment) => total + (appointment.groupSession.onePatientFee || 0), 0);
+    return paidPatients.reduce((total: any, payment: any) => total + (appointment.groupSession.onePatientFee || 0), 0);
   };
 
   // ثبت پرداخت جدید
-  const handleAddPayment = async (patientId, patientName) => {
+  const handleAddPayment = async (patientId: any, patientName: string) => {
     if (!paymentData.paymentMethod) {
       Swal.fire("خطا!", "لطفا روش پرداخت را انتخاب کنید", "warning");
       return;
@@ -111,7 +111,7 @@ const groupPatients = useMemo(() => {
   };
 
   // حذف پرداخت
-  const handleRemovePayment = async (patientId, patientName) => {
+  const handleRemovePayment = async (patientId: any, patientName: string) => {
     try {
       setShowModal(false)
    
@@ -152,7 +152,7 @@ const groupPatients = useMemo(() => {
     }
   };
 
-  const handleStatusChange = async (newStatus) => {
+  const handleStatusChange = async (newStatus: string) => {
    
      
     changeGroupStatus({appointmentId:appointment._id,status_clinic:newStatus})
@@ -163,7 +163,7 @@ const groupPatients = useMemo(() => {
     
   };
 
-  const getPaymentMethodText = (method) => {
+  const getPaymentMethodText = (method: string | number) => {
     const methodMap = {
       "card": "💳 کارت‌خوان",
       "transfer": "💸 کارت به کارت",
@@ -294,7 +294,7 @@ const groupPatients = useMemo(() => {
               بیمارانی برای این گروه یافت نشد.
             </div>
           ) : (
-            groupPatients?.map((patient) => {
+            groupPatients?.map((patient: { _id: SetStateAction<null> | Key | undefined; firstName: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; lastName: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; wallet: { toLocaleString: () => any; }; }) => {
               const paymentStatus = getPatientPaymentStatus(patient._id);
               
               return (
@@ -448,11 +448,11 @@ const groupPatients = useMemo(() => {
                             <option value="wallet"> کیف پول</option>
                             {/* <option value="bimeh">👛 بیمه</option> */}
                           </select>
-                           {paymentData.paymentMethod === 'wallet' && (
+                           {/* {paymentData.paymentMethod === 'wallet' && (
     <div style={{ marginTop: '5px', fontSize: '14px', color: '#28a745' }}>
       💰 موجودی کیف پول: {patient.wallet?.toLocaleString() || 0} تومان
     </div>
-  )}
+  )} */}
                         </div>
 
                        

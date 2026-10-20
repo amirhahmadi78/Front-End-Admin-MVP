@@ -1,8 +1,5 @@
 import "./Layout.css";
-import {  Outlet, useNavigate } from "react-router-dom";
-// import { logoutAdmin } from "../../api/auth";
-
-// import { GetPendingLeaveRequestsCount } from "../../api/adminpanel";
+import {  Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import { useState } from "react";
@@ -19,7 +16,8 @@ import { useLeavesCount } from "../../hooks/leaves";
 const LayoutDashboard = () => {
   const{user,logout}=useAuth()
 
-  
+  const location = useLocation();
+const isActive = (path: string) => location.pathname === path;
 const fullName=(user?.firstName+" "+user?.lastName)||""
 const [showModalChange,setShowModalChange]=useState(false)
 const navigate = useNavigate();
@@ -77,63 +75,32 @@ const{data:pendingCount}=useLeavesCount()
               خروج از حساب
             </button>
             <ul className="pb-20!">
-              <li onClick={() => {navigate("/dashboard")
-                setIsSidebarOpen(false)
-              }}>داشبورد</li>
-              <li onClick={() => {navigate("/therapists")
-                setIsSidebarOpen(false)
-              }}>
-                درمانگران
-              </li>
-              <li onClick={() => {navigate("/patients")
-                setIsSidebarOpen(false)
-              }}>مراجعین</li>
-              <li onClick={() => {navigate("/weeklydef")
-                setIsSidebarOpen(false)
-              }}>
-                برنامه ثابت هفتگی
-              </li>
-              <li onClick={() => {navigate("/patient-therapist")
-                setIsSidebarOpen(false)
-              }}>
-                ارتباط درمانگر و مراجع
-              </li>
-                      <li onClick={() => {navigate("/patientprofile")
-                setIsSidebarOpen(false)
-              }}>
-                پرونده ی درمانی
-              </li>
-           
-              <li onClick={() => {navigate("/exercise-assessment")
-                setIsSidebarOpen(false)
-              }}> بخش تمرینات و ارزیابی ها</li>
-              <li onClick={() => {navigate("/finance")
-                setIsSidebarOpen(false)
-              }}>امور مالی</li>
-                         
-              <li onClick={() => {navigate("/leave-requests")
-                setIsSidebarOpen(false)
-              }}>
-                بررسی مرخصی های درمانگران
-                {pendingCount > 0 && (
-                  <span className="pending-badge">{pendingCount}</span>
-                )}
-              </li>
-              <li onClick={() => {navigate("/patient-management")
-                setIsSidebarOpen(false)
-              }}>
-                یادداشت ها و مرخصی مراجعین
-              </li>
-            { user?.role==="Admin"&& <li onClick={() => {navigate("/advance")
-                setIsSidebarOpen(false)
-              }}>
-                تنظیمات پیشرفته
-              </li>}
-                  {user?.role==="Admin"&& <li onClick={() => {navigate("/adminmanagement")
-                    setIsSidebarOpen(false)
-                  }}>
-                مدیریت کارکنان
-              </li>}
+              <li className={isActive("/dashboard") ? "active" : ""} onClick={() => {navigate("/dashboard"); setIsSidebarOpen(false)}}>داشبورد</li>
+
+<li className={isActive("/therapists") ? "active" : ""} onClick={() => {navigate("/therapists"); setIsSidebarOpen(false)}}>درمانگران</li>
+
+<li className={isActive("/patients") ? "active" : ""} onClick={() => {navigate("/patients"); setIsSidebarOpen(false)}}>مراجعین</li>
+
+<li className={isActive("/weeklydef") ? "active" : ""} onClick={() => {navigate("/weeklydef"); setIsSidebarOpen(false)}}>برنامه ثابت هفتگی</li>
+
+<li className={isActive("/patient-therapist") ? "active" : ""} onClick={() => {navigate("/patient-therapist"); setIsSidebarOpen(false)}}>ارتباط درمانگر و مراجع</li>
+
+<li className={isActive("/patientprofile") ? "active" : ""} onClick={() => {navigate("/patientprofile"); setIsSidebarOpen(false)}}>پرونده ی درمانی</li>
+
+<li className={isActive("/exercise-assessment") ? "active" : ""} onClick={() => {navigate("/exercise-assessment"); setIsSidebarOpen(false)}}>بخش تمرینات و ارزیابی ها</li>
+
+<li className={isActive("/finance") ? "active" : ""} onClick={() => {navigate("/finance"); setIsSidebarOpen(false)}}>امور مالی</li>
+
+<li className={isActive("/leave-requests") ? "active" : ""} onClick={() => {navigate("/leave-requests"); setIsSidebarOpen(false)}}>
+  بررسی مرخصی های درمانگران
+  {pendingCount > 0 && <span className="pending-badge">{pendingCount}</span>}
+</li>
+
+<li className={isActive("/patient-management") ? "active" : ""} onClick={() => {navigate("/patient-management"); setIsSidebarOpen(false)}}>یادداشت ها و مرخصی مراجعین</li>
+
+{user?.role==="Admin" && <li className={isActive("/advance") ? "active" : ""} onClick={() => {navigate("/advance"); setIsSidebarOpen(false)}}>تنظیمات پیشرفته</li>}
+
+{user?.role==="Admin" && <li className={isActive("/adminmanagement") ? "active" : ""} onClick={() => {navigate("/adminmanagement"); setIsSidebarOpen(false)}}>مدیریت کارکنان</li>}
                <button
             className=" p-1! w-50! rounded-xl bg-blue-300 text-black font-bold border  mt-3!"
             onClick={() => {window.location.reload()

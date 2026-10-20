@@ -20,10 +20,7 @@ export default function AddDefAppointment({
   onSubmit,
   setShowModal,
   showModal,
-  defAppointments,
-setDefAppointments,
   setEditMode,
-
   setEditingAppointment
 }) {
 
@@ -42,6 +39,7 @@ const {data:patientsList}=useFindPatient({days:[selectedDay?.eng]})
 
 const [useSpecialPrice, setUseSpecialPrice] = useState(false);
 
+  const [filtered, setFiltered] = useState(patientsList||[]);
   const {
     register,
     handleSubmit,
@@ -63,14 +61,6 @@ const [useSpecialPrice, setUseSpecialPrice] = useState(false);
       patientFee: null,
     },
   });
-
-useEffect(() => {
-    if (!showModal) {
-      resetForm();
-    }
-  }, [showModal]);
-
-
   const resetForm = () => {
     reset({
       date: selectedDay?.eng || "",
@@ -87,11 +77,19 @@ useEffect(() => {
     setShowList(false);
     setFiltered(Array.isArray(patientsList)?patientsList:[])
   };
-  const [filtered, setFiltered] = useState(patientsList||[]);
+
+useEffect(() => {
+    if (!showModal) {
+      resetForm();
+    }
+  }, [showModal]);
+
+
+
   useEffect(()=>{
 if(Array.isArray(patientsList)){
   setFiltered(patientsList)
-}else return []
+}else setFiltered([])
 
   },[patientsList])
   // ✅ این useEffect مقادیر فرم رو وقتی editingAppointment تغییر کرد آپدیت می‌کنه
@@ -192,16 +190,7 @@ const handleDelete = async () => {
   
   return (
     <>
-      <button className="add-session-btn m-5!" onClick={() => {
-    setShowModal(true);
-    // ✅ مطمئن شو که در حالت افزودن هستی
-    if (editingAppointment) {
-      setEditingAppointment({});
-      setEditMode(false);
-    }
-  }}>
-        افزودن جلسه درمانی
-      </button>
+         
       <br />
       
       {showModal && (
@@ -296,7 +285,19 @@ const handleDelete = async () => {
               {errors.time && <p className="error-message">{errors.time.message}</p>}
 
               <label>مدت جلسه (دقیقه)</label>
-              <input type="number" placeholder="مثلاً 45" {...register("duration")} />
+ <select
+              type="number"
+              placeholder="مثلاً 45"
+              {...register("duration")}
+              className="w-full rounded-[10px] border-2 border-gray-200 bg-white px-4 py-3 text-right text-[14px] transition-all duration-300 ease-in-out focus:-translate-y-[1px] focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
+            >
+              <option value={30}>30 دقیقه</option>
+              <option value={40}>40 دقیقه</option>
+              <option value={45}>45 دقیقه</option>
+              <option value={60}>60 دقیقه</option>
+              <option value={90}>90 دقیقه</option>
+              <option value={15}>15 دقیقه</option>
+            </select>
               {errors.duration && <p className="error-message">{errors.duration.message}</p>}
 
               <label>نوع جلسه</label>

@@ -10,6 +10,7 @@ import AddDefAppointment from "./addDefAppointment";
 import { useTherapists } from "../../hooks/therapist";
 
 
+
 import type { DayOfWeek } from "../../types/enums";
 import { useCreateDefApp, useDefapp_day_th_pa, useEditDefApp } from "../../hooks/defAppointment";
 import type { editDefAppDto, NewDefAppDto } from "../../types/defAppointment";
@@ -73,21 +74,23 @@ const{mutate:EditDefApp}=useEditDefApp()
   };
 
 return (
-  <div className=" overflow-auto! mr-[100px]  bg-[#f9fafb]  p-5! ">
-    
-    <AddDefAppointment
-      defAppointments={defAppointments}
-      editingAppointment={editingAppointment}
-      setEditingAppointment={setEditingAppointment}
-      todayTherapists={todayTherapists}
-      setSelectedDay={setSelectedDay}
-      selectedDay={selectedDay}
-      onSubmit={edidMode == true ? handleEditAppointment : handleAddAppointment}
-      setShowModal={setShowModal}
-      edidMode={edidMode}
-      setEditMode={setEditMode}
-      showModal={showModal}
-    />
+  <div className="flex-col! overflow-auto! mr-25  bg-[#f9fafb]  p-5! ">
+     <div className="w-full mb-4">
+  <button
+    className="bg-blue-500 text-white border-none px-2.5! py-1! rounded-lg! cursor-pointer text-sm transition-colors duration-300 float-left hover:bg-blue-600"
+    onClick={() => {
+      setShowModal(true);
+      if (editingAppointment) {
+        setEditingAppointment({});
+        setEditMode(false);
+      }
+    }}
+  >
+    افزودن جلسه درمانی
+  </button>
+</div>
+  
+
   <button
   className="md:hidden m-2! h-10 w-full bg-indigo-600 text-white rounded-lg"
   onClick={() => setShowDailyModal(true)}
@@ -155,6 +158,19 @@ return (
         </div>
       </div>
     )}
+      <AddDefAppointment
+      // defAppointments={defAppointments}
+      editingAppointment={editingAppointment}
+      setEditingAppointment={setEditingAppointment}
+      todayTherapists={todayTherapists}
+      // setSelectedDay={setSelectedDay}
+      selectedDay={selectedDay}
+      onSubmit={edidMode == true ? handleEditAppointment : handleAddAppointment}
+      setShowModal={setShowModal}
+      // edidMode={edidMode}
+      setEditMode={setEditMode}
+      showModal={showModal}
+    />
   </div>
 );
 

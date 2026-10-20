@@ -119,8 +119,8 @@ useEffect(() => {
   {errors.phone && (
           <p className="error-message">{errors.phone.message}</p>
         )}
-              <label>درصد تخفیف</label>
-              <input type="number" placeholder="عدد وارد کنید"  {...register("discountPercent")}/>
+              <label hidden>درصد تخفیف</label>
+              <input hidden type="number" placeholder="عدد وارد کنید"  {...register("discountPercent")}/>
   {errors.discountPercent && (
           <p className="error-message">{errors.discountPercent.message}</p>
         )}

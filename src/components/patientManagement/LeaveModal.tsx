@@ -16,6 +16,8 @@ const LeaveModal = ({ isOpen, onClose, leaveData = null ,date}) => {
   const [patientSearch, setPatientSearch] = useState("");
 
   const { data: patients, isLoading: patientsLoading } = useListPatients();
+
+  
   const { mutateAsync: createLeave, isPending: isCreating } = useCreateLeavePA();
   const { mutateAsync: updateLeave, isPending: isUpdating } = useUpdateLeavePA();
 

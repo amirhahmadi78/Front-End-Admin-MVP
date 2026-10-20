@@ -57,7 +57,7 @@ const[walletModal,setWalletModal]=useState(false)
               <th>نوع پرداخت</th>
               <th>شماره تماس</th>
               <th>آدرس</th>
-              <th> درصد تخفیف</th>
+              {/* <th> درصد تخفیف</th> */}
               <th>عملیات</th>
               <th>کیف پول</th>
             </tr>
@@ -74,7 +74,7 @@ const[walletModal,setWalletModal]=useState(false)
                   }</td>
                   <td>{onePatient.phone}</td>
                   <td>{onePatient.address}</td>
-                  <td>{onePatient.discountPercent}</td>
+                  {/* <td>{onePatient.discountPercent}</td> */}
                   <td className="actions-cell">
                     <button
                       className="view-btn"

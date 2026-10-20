@@ -172,3 +172,17 @@ html, body {
 .admin-layout.sidebar-closed .admin-main {
   margin-right: 0;
 }
+
+
+
+
+
+.admin-sidebar li.active {
+  background-color: #3b82f6;
+  color: #fff;
+  font-weight: bold;
+}
+
+.admin-sidebar li.active:hover {
+  background-color: #2563eb;
+}

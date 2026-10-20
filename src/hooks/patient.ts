@@ -19,22 +19,27 @@ import { AlertSwal } from "../utils/errorSwal";
 import { QueryService } from "../utils/customHooks";
 
 export const useFindPatient = (query: DTOFindPatient) => {
+
+  
   return useQuery({
     queryKey: ["patientlist", query,query.days],
     queryFn:  () => GetFindPatients(query),
     
-      initialData:[] ,
+      initialData:{patients:[]} ,
+      structuralSharing: false,
   });
 };
 
 
 
 export const useRefetchFindPatient = (query: DTOFindPatient) => {
+
   return useQuery({
     queryKey: ["patientlist", query],
     queryFn: () => GetFindPatients(query),
-    initialData: [],
+    initialData: {patients:[]},
     enabled: false,
+    structuralSharing: false,
   });
 };
 
@@ -90,22 +95,9 @@ export const useEditPatient = () => {
   return QueryService.GetMutation(
     (payload: DTOeditPatient) => PostEditPatient(payload),
     {
-      onSuccess: (data) => {
-        qc.setQueriesData(
-          {
-            queryKey: ["patientlist"],
-          },
-          (oldData:{patients:DTOeditPatient[]}) => {
-     
-
-            
-            if (!oldData) return oldData;
-
-
-            return {...oldData,patients:oldData.patients.map((t) => (t._id == data._id ? data : t))}
-          },
-        );
-      },
+onSuccess: () => {
+  qc.invalidateQueries({ queryKey: ["patientlist"], exact: false });
+}
     },
   );
 };

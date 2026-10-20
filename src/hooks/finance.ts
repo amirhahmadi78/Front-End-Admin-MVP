@@ -167,7 +167,7 @@ const qc=useQueryClient()
     mutationFn: (payload: BatchPaymentRequest) => batchPaymentService(payload),
      onSuccess: () => {
           
-         qc.invalidateQueries("appointmentslist")
+         qc.invalidateQueries( {queryKey: ["appointmentslist"]})
         },
   })
 }
